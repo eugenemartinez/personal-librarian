@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Librarian
+
+Personal Librarian is a Next.js application designed to help users manage their book collections. It allows users to search for books, track reading progress, and organize their library seamlessly. The app integrates with the Open Library API for fetching book data and provides a modern, interactive user experience.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+Make sure you have the following installed on your system:
+- Node.js (v16 or higher)
+- npm, yarn, or pnpm (package manager)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/eugenemartinez/personal-librarian.git
+   cd personal-librarian
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Search for Books**: Search for books using the Open Library API.
+- **Book Details**: View detailed information about a book, including its title, author, genre and other categories, date published, and number of pages.
+- **Reading Progress**: Track and reset reading progress for books in your library.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Dynamic Routing**: Dynamic pages for individual book details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js**: Framework for building server-rendered React applications.
+- **TypeScript**: Strongly typed JavaScript for better developer experience.
+- **Lucide-React**: Icon library for modern and customizable icons.
+- **Framer Motion**: Animations and transitions for a smooth user experience.
+- **Open Library API**: Fetch book data and cover images.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Deployment
+
+The easiest way to deploy this application is to use [Vercel](https://vercel.com/). Follow these steps:
+
+1. Push your code to a GitHub repository.
+2. Go to [Vercel](https://vercel.com/) and import your repository.
+3. Follow the deployment instructions provided by Vercel.
+
+---
+
+## Acknowledgments
+
+- [Open Library API](https://openlibrary.org/developers/api) for providing book data.
+- [Lucide-React](https://lucide.dev/) for the icons.
+- [Framer Motion](https://www.framer.com/motion/) for animations.
+- [Next.js](https://nextjs.org/) for the framework.# personal-librarian
