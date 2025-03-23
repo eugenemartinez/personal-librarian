@@ -5,18 +5,19 @@ import { getBookById } from '@/lib/api/openLibraryApi';
 // Make this a dynamic page to fetch fresh data
 export const dynamic = 'force-dynamic';
 
-export default async function BookDetailPage({ params }: { params: { id: string } }) {
-  try {
-    // Await the params object to access its properties
-    const { id } = await params;
+interface BookDetailPageProps {
+  params: Promise<{ id: string }>; // Mark params as a Promise
+}
 
+export default async function BookDetailPage({ params }: BookDetailPageProps) {
+  // Await params before destructuring
+  const { id } = await params;
+
+  try {
     // Fetch book data from Open Library API
     const book = await getBookById(id);
 
-    // In our demo, all books have content via our mock reader
     const hasContent = true;
-
-    // Use our internal reader URL for all books
     const readUrl = `/reader/${id}`;
 
     return <BookDetails book={book} hasContent={hasContent} readUrl={readUrl} />;

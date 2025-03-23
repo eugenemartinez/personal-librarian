@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
 import { useState, useRef } from "react";
 import { Control } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator"; 
+import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 import { FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Switch } from "@/components/ui/switch";
-import { SettingsFormValues } from "../page";
-import { Upload, Download, AlertTriangle } from "lucide-react"; // Add icons
+import { SettingsFormValues } from "../formSchema";
+import { Upload, Download, AlertTriangle } from "lucide-react";
 
 interface DataManagementSettingsProps {
   control: Control<SettingsFormValues>;
-  onFieldChange?: (field: keyof SettingsFormValues, value: any) => void;
+  onFieldChange?: (field: keyof SettingsFormValues, value: any) => void; // Ensure this matches the expected type
 }
 
 export function DataManagementSettings({ control, onFieldChange }: DataManagementSettingsProps) {
@@ -21,10 +21,9 @@ export function DataManagementSettings({ control, onFieldChange }: DataManagemen
   const [isImporting, setIsImporting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Create a safe function to call onFieldChange
+  // Safe wrapper for calling onFieldChange
   const handleFieldChange = (field: keyof SettingsFormValues, value: any) => {
-    // Only call if the function exists
-    if (typeof onFieldChange === 'function') {
+    if (typeof onFieldChange === "function") {
       onFieldChange(field, value);
     }
   };
@@ -198,16 +197,17 @@ export function DataManagementSettings({ control, onFieldChange }: DataManagemen
                   checked={field.value}
                   onCheckedChange={(checked) => {
                     field.onChange(checked);
-                    handleFieldChange("enableReadHistory", checked);
+                    handleFieldChange("enableReadHistory", checked); // Use the safe wrapper
                   }}
                 />
               </FormControl>
             </FormItem>
           )}
         />
-        
+
         <Separator className="bg-border" />
-        
+
+        {/* Library Backup & Restore */}
         <div className="grid gap-6">
           <div>
             <h3 className="text-lg font-medium mb-2 text-foreground">Library Backup & Restore</h3>
@@ -219,18 +219,17 @@ export function DataManagementSettings({ control, onFieldChange }: DataManagemen
                 variant="outline"
                 onClick={exportLibraryData}
                 className="text-sm sm:text-base"
-                type="button" // Add this to prevent form submission
+                type="button"
               >
                 <Download className="h-4 w-4 mr-2" />
                 Export Data
               </Button>
-              
               <Button
                 variant="outline"
                 onClick={handleImportClick}
                 className="text-sm sm:text-base"
                 disabled={isImporting}
-                type="button" // Add this to prevent form submission
+                type="button"
               >
                 <Upload className="h-4 w-4 mr-2" />
                 {isImporting ? "Importing..." : "Import Data"}

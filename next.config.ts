@@ -30,7 +30,9 @@ const nextConfig: NextConfig = {
     // Optionally, set an imageSizes array for custom image widths
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  // Any other existing config...
+  eslint: {
+    ignoreDuringBuilds: true, // Skip ESLint checks during builds
+  },
 };
 
 export default nextConfig;

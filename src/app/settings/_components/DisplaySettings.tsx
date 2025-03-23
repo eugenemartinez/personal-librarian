@@ -16,18 +16,17 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
-import { SettingsFormValues } from "../page";
+import { SettingsFormValues } from "../formSchema";
 
 interface DisplaySettingsProps {
   control: Control<SettingsFormValues>;
-  onFieldChange?: (field: keyof SettingsFormValues, value: any) => void;
+  onFieldChange: (field: keyof SettingsFormValues, value: any) => void; // Ensure this matches the expected type
 }
 
 export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps) {
-  // Create a safe function to call onFieldChange
+  // Safe wrapper for calling onFieldChange
   const handleFieldChange = (field: keyof SettingsFormValues, value: any) => {
-    // Only call if the function exists
-    if (typeof onFieldChange === 'function') {
+    if (typeof onFieldChange === "function") {
       onFieldChange(field, value);
     }
   };
@@ -48,11 +47,11 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-foreground">Theme</FormLabel>
-              <Select 
+              <Select
                 onValueChange={(value) => {
                   field.onChange(value);
-                  handleFieldChange("theme", value);
-                }} 
+                  handleFieldChange("theme", value); // Use the safe wrapper
+                }}
                 value={field.value}
               >
                 <FormControl>
@@ -84,14 +83,14 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
                 <div className="space-y-2">
                   <div className="flex items-center gap-4 px-1">
                     <span className="text-xs text-muted-foreground">A</span>
-                    <Slider 
+                    <Slider
                       min={14}
                       max={28}
                       step={1}
                       value={[field.value]}
                       onValueChange={(values) => {
                         field.onChange(values[0]);
-                        handleFieldChange("fontSize", values[0]);
+                        handleFieldChange("fontSize", values[0]); // Use the safe wrapper
                       }}
                       className="w-full max-w-xs flex-1 cursor-pointer"
                     />
@@ -116,11 +115,11 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-foreground">Font Family</FormLabel>
-              <Select 
+              <Select
                 onValueChange={(value) => {
                   field.onChange(value);
-                  handleFieldChange("fontFamily", value);
-                }} 
+                  handleFieldChange("fontFamily", value); // Use the safe wrapper
+                }}
                 value={field.value}
               >
                 <FormControl>
@@ -140,7 +139,7 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
             </FormItem>
           )}
         />
-        
+
         {/* Line Height */}
         <FormField
           control={control}
@@ -148,11 +147,11 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-foreground">Line Spacing</FormLabel>
-              <Select 
+              <Select
                 onValueChange={(value) => {
                   field.onChange(value);
-                  handleFieldChange("lineHeight", value);
-                }} 
+                  handleFieldChange("lineHeight", value); // Use the safe wrapper
+                }}
                 value={field.value}
               >
                 <FormControl>
@@ -173,7 +172,7 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
             </FormItem>
           )}
         />
-        
+
         {/* Reading Mode */}
         <FormField
           control={control}
@@ -181,11 +180,11 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-foreground">Reading Mode</FormLabel>
-              <Select 
+              <Select
                 onValueChange={(value) => {
                   field.onChange(value);
-                  handleFieldChange("preferredReadingMode", value);
-                }} 
+                  handleFieldChange("preferredReadingMode", value); // Use the safe wrapper
+                }}
                 value={field.value}
               >
                 <FormControl>
@@ -195,18 +194,13 @@ export function DisplaySettings({ control, onFieldChange }: DisplaySettingsProps
                 </FormControl>
                 <SelectContent>
                   <SelectItem className="cursor-pointer" value="page">Page Mode</SelectItem>
-                  <SelectItem value="scroll" className="flex items-center gap-2 cursor-pointer">
-                    <span>Scroll Mode</span>
-                    <Badge variant="outline" className="ml-1 text-xs font-normal bg-yellow-100/10 text-yellow-600 dark:text-yellow-400 border-yellow-200 dark:border-yellow-900">
-                      Beta
-                    </Badge>
-                  </SelectItem>
+                  <SelectItem className="cursor-pointer" value="scroll">Scroll Mode</SelectItem>
                 </SelectContent>
               </Select>
               <FormDescription className="text-xs sm:text-sm text-muted-foreground">
-                {field.value === 'page' 
-                  ? 'Traditional page-by-page reading experience.' 
-                  : 'Continuous scrolling experience (beta).'}
+                {field.value === "page"
+                  ? "Traditional page-by-page reading experience."
+                  : "Continuous scrolling experience (beta)."}
               </FormDescription>
             </FormItem>
           )}
