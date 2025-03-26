@@ -47,23 +47,23 @@ export function AboutSettings() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               <div className="border border-border rounded-md p-2">
                 <p className="text-sm font-medium">Next.js 15</p>
-                <p className="text-xs text-muted-foreground">Framework</p>
+                <p className="text-xs text-muted-foreground"> React Framework</p>
               </div>
               <div className="border border-border rounded-md p-2">
                 <p className="text-sm font-medium">React 19</p>
-                <p className="text-xs text-muted-foreground">UI Library</p>
+                <p className="text-xs text-muted-foreground">JavaScript Library</p>
               </div>
               <div className="border border-border rounded-md p-2">
                 <p className="text-sm font-medium">TypeScript</p>
-                <p className="text-xs text-muted-foreground">Language</p>
+                <p className="text-xs text-muted-foreground">Programming Language</p>
               </div>
               <div className="border border-border rounded-md p-2">
                 <p className="text-sm font-medium">Tailwind CSS</p>
-                <p className="text-xs text-muted-foreground">Styling</p>
+                <p className="text-xs text-muted-foreground">CSS Framework</p>
               </div>
               <div className="border border-border rounded-md p-2">
                 <p className="text-sm font-medium">Shadcn UI</p>
-                <p className="text-xs text-muted-foreground">Components</p>
+                <p className="text-xs text-muted-foreground">UI Components</p>
               </div>
               <div className="border border-border rounded-md p-2">
                 <p className="text-sm font-medium">LocalStorage</p>
